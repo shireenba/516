@@ -1,0 +1,24 @@
+<script> 
+
+let guess = 50
+let max = 100
+let min = 1
+
+let response = prompt("Is your number " + guess + "?");
+
+while(response == "<" || response == ">" ) {
+ 
+  if(response == "<") {
+    max = guess
+    guess = Math.floor((max + min)/2)
+    response = prompt("Is your number " + guess + "?");
+  }
+  else if(response == ">") {
+    min = guess
+    guess = Math.floor((max + min)/2)
+    response = prompt("Is your number " + guess + "?");
+  }
+}
+alert("I won!");
+
+</script>
