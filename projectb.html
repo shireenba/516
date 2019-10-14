@@ -1,0 +1,61 @@
+<script>
+
+"use strict"
+
+let num = prompt("Enter a positive or negative integer");
+let shift = parseInt(num); // 261
+let message = prompt("Enter a message");
+let position = 0;
+let cipher = "";
+
+for (position = 0; position < message.length; position++) {
+  let c = message.charCodeAt(position); // 90
+  let cshift = (shift%26) // 1
+	if(shift > 0){
+		if(c >= 65 && c <= 90) {
+			if((c + cshift) > 90){
+			c = c - 26
+			}
+			else{
+			}
+			cipher += String.fromCharCode(c + cshift);
+		}
+		else if(c >= 97 && c <= 122) {
+			if((c + cshift) > 122){
+			c = c - 26
+			}
+			else{
+			}
+			cipher += String.fromCharCode(c + cshift);
+		}
+		else {
+			cipher += message.charAt(position);
+		}
+	}
+	else if(shift < 0){
+		if(c >= 65 && c <= 90) {
+			if((c + cshift) < 65){
+			c = c + 26
+			}
+			else{
+			}
+			cipher += String.fromCharCode(c + cshift);
+		}
+		else if(c >= 97 && c <= 122) {
+			if((c + cshift) < 97){
+			c = c + 26
+			}
+			else{
+			}
+			cipher += String.fromCharCode(c + cshift);
+		}
+		else {
+			cipher += message.charAt(position);
+		}
+	}
+}
+   
+alert(cipher)
+
+//Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz
+</script>
