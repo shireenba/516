@@ -1,0 +1,47 @@
+<script>
+
+"use strict"
+
+const itemBank = {
+  "on": ["The cup is __ the table", "The clock is __ the wall",   
+    "The blanket is __ the couch", "The book is __ the shelf", 
+    "The pencil is __ the notebook"],
+  "in": ["The plate is __ the cabinet", "The clothes are __ the washing machine", 
+    "The car is __ the garage", "The baby is __ the crib", 
+    "The milk is __ the refrigerator"],
+  "at": ["The class is __ 9 o'clock", "The meeting is __ 2 o'clock", 
+    "The match is __ 7 o'clock", "The assignment is due __ noon", 
+    "The delivery person is __ the door"],
+  "of": ["I would like a cup __ water", "She listened to a piece __ music",
+    "The actor forgot all __ her lines", "They were members __ the same species",
+    "She bought an item __ clothing from the store"],
+  "from": ["The tea was imported __ India", "She took the bus __ her house to school",
+    "The plane departed __ Chicago", "She received a gift __ her husband", 
+    "The song was __ the 1960s"]
+}
+
+let model = {"on": -1, "in": 0, "at": 0, "of": 0, "from": 0};
+
+let minPrep = "on";
+
+while(true) {
+  for(let prep in model) {
+    if((model[minPrep]) > (model[prep])) {
+      minPrep = prep;  
+    }
+  }
+
+  let item = itemBank[minPrep][Math.floor(Math.random() * 5 )];
+  let answer = prompt(item);
+
+  if(answer == minPrep) {
+    alert("Correct!");
+    model[minPrep] ++;
+  }
+  else {
+    alert(item.replace("__", minPrep));  
+    model[minPrep] --;
+  }
+}
+
+</script>
