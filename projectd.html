@@ -1,0 +1,14 @@
+<script>
+"use strict";
+
+let message = prompt("Enter your message.");
+
+let haigyPaigy = message.replace(/([aeiouy]+[^aeiouy]+)e\b/gi, "$1_");
+
+haigyPaigy = haigyPaigy.replace(/([aeiouy]+)/gi, "aig$1");
+
+haigyPaigy = haigyPaigy.replace(/_\b/g, "e");
+
+alert(haigyPaigy)
+
+</script>
