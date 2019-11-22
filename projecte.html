@@ -1,0 +1,44 @@
+<p>Input:<br><textarea id="input" rows="10" cols="80"></textarea>
+<p><button onclick="process()">Process</button>
+<p>Output:<br><textarea id="output" rows="10" cols="80"></textarea>
+
+<script>
+
+"use strict"
+
+function process() {
+
+	let input = document.getElementById("input").value;
+
+	input = input.replace(/[^a-z0-9\s]/gi, " ");
+	input = input.replace(/\s{2,}/g, " ");
+	input = input.toUpperCase();
+
+	let tokens = input.split(" "); //creates an array called "tokens"
+	let types = [...new Set(tokens)]; //creates an array called "types" with unique tokens only
+	let ratio = types.length / tokens.length; 
+  let count = 0;
+	let dictionary = {};
+
+	for (let i = 0; i < types.length; i++) { //runs once for each type
+    for (let m = 0; m < tokens.length; m++) { //checks each token
+      if (types[i] == tokens[m]) {  
+        count++;
+      }
+    }
+    dictionary[types[i]] = count; //puts type i into the dictionary with count
+    count = 0; // resets count to 0 
+  }
+	
+  let sortedList = Object.keys(dictionary).sort(function(a,b) {   //https://stackoverflow.com/questions/1069666/sorting-javascript-object-by-property-value
+    return dictionary[b] - dictionary[a]
+  }); //this is an array
+  let output = "";
+  for (let k = 0; k < sortedList.length; k++) {
+    output += sortedList[k] + " " + dictionary[sortedList[k]] + "\n";
+  }
+  document.getElementById("output").value = "Types and frequencies:" + "\n" + output + "Type/Token ratio:" + " " + ratio;
+}   
+	
+
+</script>
