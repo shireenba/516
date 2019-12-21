@@ -1,0 +1,23 @@
+<script>
+
+"use strict"
+
+
+let input = "In comparison with the full student population (Fox, 2005). I also think that blah blah blah (Shireen, 2019). I also think that blah blah blah."
+
+let citeList = input.replace(/\([a-z]+,\s\d\d\d\d\)/gi, "___");
+
+citeList = citeList.replace(/\./gi, "___" + ". ");
+
+  let re = /\([a-z]+,\s\d\d\d\d\)/gi;
+  let m;
+
+	m = input.match(re);
+	console.log(m);
+	console.log(m.length);
+	for (let i =0; i < m.length; i++){
+		citeList +="\n" + (i+1) + ". " + m[i];
+	}
+	console.log(citeList);
+
+</script>
